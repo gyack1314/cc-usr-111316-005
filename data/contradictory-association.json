@@ -1,0 +1,59 @@
+{
+  "kind": "risk-coupling",
+  "dimensions": [
+    {
+      "id": "flood",
+      "states": [
+        {
+          "loss": "0",
+          "probability": "1/2"
+        },
+        {
+          "loss": "100",
+          "probability": "1/2"
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "states": [
+        {
+          "loss": "0",
+          "probability": "1/2"
+        },
+        {
+          "loss": "80",
+          "probability": "1/2"
+        }
+      ]
+    }
+  ],
+  "joint_event_constraints": [
+    {
+      "id": "impossible-high",
+      "event": {
+        "flood": [
+          1
+        ],
+        "heat": [
+          1
+        ]
+      },
+      "lower": "3/4",
+      "upper": "3/4"
+    }
+  ],
+  "moment_constraints": [],
+  "thresholds": [
+    "80",
+    "100"
+  ],
+  "loss_function": {
+    "name": "sum-loss",
+    "parameters": {}
+  },
+  "solver_budget": {
+    "max_states": 4096,
+    "max_steps": 10000
+  }
+}
